@@ -1,0 +1,40 @@
+
+<%- include("partials/header"); -%>
+
+<nav class="navbar navbar-expand-lg bg-light mb-5">
+    <div class="container">
+      <a class="navbar-brand" href="/">Blogging Site</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse navitem" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/adminhome">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/addblog">Add Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </nav>
+
+<div class="container">
+    <h1>Compose</h1>
+<form class="" action="/addBlog" method="post">
+  <div class="form-group">
+    <label>Title</label>
+    <input class="form-control" type="text" name="title">
+    <label>Post</label>
+    <textarea class="form-control" name="post" rows="5" cols="30"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+
+</div>
+
+<%- include("partials/footer"); -%>

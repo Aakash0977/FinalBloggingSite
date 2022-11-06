@@ -35,8 +35,10 @@
             <div class="card-body">
               <div class="d-flex flex-start align-items-center">
                 <div>
-                  <h6 class="fw text-primary mb-1"><%= post.title %></h6>
-                  <p class="text-muted small mb-0" style="font-size: 10px;"><%= post.created_date %></p>
+                  <h6 class="fw-bold text-primary mb-1" ><%= post.title %></h6>
+                  <p class="text-muted small mb-0">
+                    Shared publicly - <%= post.created_date %>
+                  </p>
                 </div>
               </div>
 
@@ -45,11 +47,11 @@
               </p>
   
               <div class="small d-flex justify-content-start">
-                <a href="/like/<%= post.id %>" class="d-flex align-items-center me-3">
+                <a href="#!" class="d-flex align-items-center me-3">
                   <i class="far fa-thumbs-up me-2"></i>
                   <p class="mb-0"  id="<%= post.is_liked %>"><%= post.likecount %> Like</p>
                 </a>
-                <a href="/comment/<%=post.id%>" class="d-flex align-items-center me-3">
+                <a href="#!" class="d-flex align-items-center me-3">
                   <i class="far fa-comment-dots me-2"></i>
                   <p class="mb-0"><%= post.commentcount %> Comment</p>
                 </a>
@@ -62,25 +64,23 @@
             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
               <div class="d-flex flex-start w-100">
                 <div class="form-outline w-100">
-                  <ul>
-                    <% if (messages.error){ %>
-                      <li><%= messages.error  %> </li>
-                    <% } %> 
-                  </ul>
-                  <form action="/sendmail" method="post">
-                    <div class="form-group d-flex flex-row">
+                  
+                  <!-- <form action="/sendmail" method="post">
+                    <div class="form-group">
                       <input type="text" class="form-control" id="commentbox" placeholder="Comment" name="blogId" hidden value="<%= post.id %>">
-                      <input type="text" class="form-control " id="commentbox" placeholder="Write comment here..." name="comments">
-                      <button class="btn btn-primary btn-sm ml-2"  type="submit">comment</button>
+                      <input type="text" class="form-control" id="commentbox" placeholder="Comment" name="comments">
+                      <button class="btn btn-primary btn-sm"  type="submit">Post comment</button>
                     </div>
-                  </form>
+                  </form> -->
                   
                   
                 </div>
               </div>
-                <!-- <% for (let com of comments) { %>
-                  <label class="form-label" for="textAreaExample"><a><b><%= com.name  %></b> - </a><%= com.comment %>  <i class='fa fa-trash' style ="color: gray; font-size:12px;"></i></label><br>            
-                <% } %> -->
+                <% for (let com of comments) { %>
+                  <label class="form-label" for="textAreaExample"><a><b><%= com.name  %></b> - </a><%= com.comment %> 
+ 
+                      <a href="/delcomment/<%= post.id%>/<%= com.id%>"><i class='fa fa-trash' style ="color: gray; font-size:12px;"></i></a> </i></label><br>
+                <% } %>
                 <div class="float-end mt-2 pt-1"></div> 
               </div>
             </div>

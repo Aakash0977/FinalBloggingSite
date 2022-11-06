@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 <nav class="navbar navbar-expand-lg bg-light mb-5">
   <div class="container">
-    <a class="navbar-brand" href="/">Blogging Site</a>
+    <a class="navbar-brand" href="/home"><i class="fas fa-book fa-1x"></i>Blogging Site</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,7 +11,7 @@
           <a class="nav-link " aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/profile"> <%= user %> Profile</a>
+          <a class="nav-link" href="/profile"> <%= user.name %> Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -22,7 +22,13 @@
 </nav>
 
 <div class="container mt-5">
-  <h1>Welcome to <%= user %> Profile</h1>
+  <h1>Welcome to <%= user.name %> Profile</h1>
+
+  <ul>
+    <% if (messages.success_msg){ %>
+      <li><%= messages.success_msg  %> </li>
+    <% } %> 
+  </ul>
 
   <div class="row">
     <div class="col-sm-8">
@@ -31,13 +37,14 @@
 
           <!-- Makes POST request to /profile route -->
           <form action="/profile" method="POST">
+            <input type="text" class="form-control" name="userid" hidden value="<%= user.id %>">
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name">
+              <input type="text" class="form-control" name="name" value="<%= user.name %>">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" name="email">
+              <input type="email" class="form-control" name="email" value="<%= user.email %>">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
