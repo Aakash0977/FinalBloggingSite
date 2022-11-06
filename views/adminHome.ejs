@@ -1,29 +1,5 @@
 <%- include('partials/header') %>
-
-<nav class="navbar navbar-expand-lg bg-light mb-5">
-    <div class="container">
-      <a class="navbar-brand" href="/adminhome">Blogging Site</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse navitem" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/adminhome">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/addblog">Add Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/userdetails">Users Details</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div> 
-    </div>
-  </nav>
+<%- include('partials/adminNavbar') %>
 
   <section style="background-color: #eee;">
   <% if (posts.length > 0) { %>
@@ -62,14 +38,14 @@
               </div>
             </div>
             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-              <div class="d-flex flex-start w-100">
+              <!-- <div class="d-flex flex-start w-100">
                 <div class="form-outline w-100">
                   <label class="form-label" for="textAreaExample">Message</label>
                 </div>
-              </div>
+              </div> -->
               <div class="float-end mt-2 pt-1">
                 <a href="/editBlog/<%= post.id %>"><button type="button" class="btn btn-primary btn-sm" >Edit</button></a>
-                <a href="/deleteBlog/<%= post.id %>"><button type="button" class="btn btn-outline-primary btn-sm">Delete</button></a>
+                <a href="/deleteBlog/<%= post.id %>"><button type="button" class="btn btn-outline-primary btn-sm" onclick="ConfirmDelete()">Delete</button></a>
               </div>
             </div>
           </div>
@@ -81,5 +57,12 @@
     <h1>No Products Found!</h1>
   <% } %>
   </section>
+
+  <script>
+    function ConfirmDelete()
+{
+  return confirm("Are you sure you want to delete?");
+}
+  </script>
  
   <%- include('partials/footer') %>

@@ -1,29 +1,5 @@
 <%- include('partials/header') %>
-
-<nav class="navbar navbar-expand-lg bg-light mb-5">
-    <div class="container">
-      <a class="navbar-brand" href="/home"><i class="fas fa-book fa-1x"></i>Blogging Site</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse navitem" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link " aria-current="page" href="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile"><%= user.name  %> </a>
-          </li>
-        </ul>
-        <div class="ms-auto">
-            <form class="form-inline my-2 my-lg-0" action="/home " method="POST">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-              <button class="btn btn-sm btn-outline-secondary" type="submit">Search</button>
-            </form>
-        </div>
-      </div>
-    </div>
-  </nav>
+<%- include('partials/userNavbar') %>
 
   <section style="background-color: #eee;">
   <% if (posts.length > 0) { %>
@@ -64,21 +40,18 @@
             <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
               <div class="d-flex flex-start w-100">
                 <div class="form-outline w-100">
-                  
-                  <!-- <form action="/sendmail" method="post">
-                    <div class="form-group">
+                  <form action="/comment" method="post">
+                    <div class="form-group d-flex flex-row">
                       <input type="text" class="form-control" id="commentbox" placeholder="Comment" name="blogId" hidden value="<%= post.id %>">
-                      <input type="text" class="form-control" id="commentbox" placeholder="Comment" name="comments">
-                      <button class="btn btn-primary btn-sm"  type="submit">Post comment</button>
+                      <input type="text" class="form-control" id="commentbox" placeholder="Comment" name="blogTitle" hidden value="<%= post.title %>">
+                      <input type="text" class="form-control " id="commentbox" placeholder="Write comment here..." name="comments">
+                      <button class="btn btn-primary btn-sm ml-2" type="submit">comment</button>
                     </div>
-                  </form> -->
-                  
-                  
+                  </form>
                 </div>
               </div>
                 <% for (let com of comments) { %>
                   <label class="form-label" for="textAreaExample"><a><b><%= com.name  %></b> - </a><%= com.comment %> 
- 
                       <a href="/delcomment/<%= post.id%>/<%= com.id%>"><i class='fa fa-trash' style ="color: gray; font-size:12px;"></i></a> </i></label><br>
                 <% } %>
                 <div class="float-end mt-2 pt-1"></div> 
@@ -93,7 +66,5 @@
     <h1>No Blogs Found!</h1>
   <% } %>
   </section>
-
   
- 
   <%- include('partials/footer') %>
