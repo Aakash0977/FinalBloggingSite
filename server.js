@@ -222,6 +222,16 @@ app.get('/logout', (req, res) => {
             res.redirect('/login');
         }
       });
+});
+
+app.get('/adminlogout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+          res.status(400).send('Unable to log out')
+        } else {
+            res.redirect('/adminlogin');
+        }
+      });
 
 });
 

@@ -1,64 +1,51 @@
 <%- include('partials/header') %>
-<div class="container mt-5">
-  <h1>Register</h1>
 
-  <ul>
-    <% if(typeof errors != 'undefined') { %>
-      <% errors.forEach( (error)=>{ %>
-        <li><%= error.message  %> </li>
-        <% }) %>
-        <% } %>    
-  </ul>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-light text-black" style="border-radius: 1rem;">
+          <div class="card-body p-5 ">
+            <h2 class="mb-2">Register</h2>
 
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-body">
+            <ul>
+              <% if(typeof errors != 'undefined') { %>
+                <% errors.forEach( (error)=>{ %>
+                  <li><%= error.message  %> </li>
+                  <% }) %>
+                  <% } %>    
+            </ul>
+            <form action="/register" method="POST">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+              <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" class="form-control" name="password2">
+              </div>
+              <button type="submit" class="btn btn-dark">Register</button>
+              &nbsp&nbsp<a href="/login">Already registerd? login here </a>
+            </form>
+            <hr class="my-4">
 
-          <!-- Makes POST request to /register route -->
-          <form action="/register" method="POST">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" name="name">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="email">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <div class="form-group">
-              <label for="password2">Confirm Password</label>
-              <input type="password" class="form-control" name="password2">
-            </div>
-            <button type="submit" class="btn btn-dark">Register</button>
-            <a href="/login">Already registerd? login here </a>
-          </form>
-          
+              <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;" type="submit"><i
+                  class="fab fa-google me-2"></i>LogIn with google</button>
+              <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;" type="submit"><i
+                  class="fab fa-facebook-f me-2"></i>LogIn with facebook</button>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign In with Google
-          </a>
-        </div>
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-facebook" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign Up with Facebook
-          </a>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
+</section>
 
 <%- include('partials/header') %>

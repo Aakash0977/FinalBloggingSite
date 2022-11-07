@@ -1,60 +1,52 @@
 <%- include('partials/header') %>
 
-<div class="container mt-5">
-  <h1>Login</h1>
+  <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-light text-black" style="border-radius: 1rem;">
+            <div class="card-body p-5 ">
 
-  <ul>
-    <% if (messages.success_msg){ %>
-      <li><%= messages.success_msg  %> </li>
-    <% } %> 
-  </ul>
+              <h2 class="mb-2">Log In</h2>
 
-  <ul>
-    <% if (messages.error){ %>
-      <li><%= messages.error  %> </li>
-    <% } %> 
-  </ul>
+              <ul>
+                <% if (messages.success_msg){ %>
+                  <li>
+                    <%= messages.success_msg %>
+                  </li>
+                  <% } %>
+              </ul>
 
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-body">
+              <ul>
+                <% if (messages.error){ %>
+                  <li>
+                    <%= messages.error %>
+                  </li>
+                  <% } %>
+              </ul>
+              <form action="/login" method="POST">
+                <div class="form-group">
+                  <label for="name">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Enter your e-mail">
+                </div>
+                <div class="form-group">
+                  <label for="name">Password</label>
+                  <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-dark">Login</button>
+                <a class="btn btn-light btn-lg" href="/register" role="button">Register</a>
+              </form>
 
-          <!-- Makes POST request to /login route -->
-          <form action="/login" method="POST">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="email">
+              <hr class="my-4">
+
+              <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;" type="submit"><i
+                  class="fab fa-google me-2"></i> LogIn with google</button>
+              <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;" type="submit"><i
+                  class="fab fa-facebook-f me-2"></i>LogIn with facebook</button>
+
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-dark">Login</button>
-            <a class="btn btn-light btn-lg" href="/register" role="button">Register</a>
-          </form>
-
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign In with Google
-          </a>
-        </div>
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-facebook" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign Up with Facebook
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+  </section>
