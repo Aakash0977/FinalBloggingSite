@@ -18,11 +18,11 @@
             <th scope="row" ><%= post.id  %></th>
             <td><%= post.name  %></td>
             <td><%= post.email  %></td>
-            <td><a href="/deluser/<%=post.id%>"><i class="fa fa-trash large"></i></a></td>
+            <td><a href="/deluser/<%=post.id%>"><i class="fa fa-trash large" onclick="ConfirmDelete()"></i></a></td>
           </tr>
           <% } %>
           <% } else { %>
-            <h1>No Blogs Found!</h1>
+            <h1>No Users Found!</h1>
           <% } %>
         </tbody>
       </table>
@@ -32,4 +32,10 @@
 </table>
  
 </body>
+<script>
+  function ConfirmDelete()
+{
+return confirm("Are you sure you want to delete?");
+}
+</script>
 </html>

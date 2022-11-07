@@ -367,7 +367,7 @@ app.get('/admindelcomment/:blogId/:commentId', (req, res) => {
 
 app.get('/userdetails',checkNotAuthenticatedAdmin, async (req,res)=>{
     const allusers = await pool.query(`SELECT id, name, email, password
-	FROM public.users `);
+	FROM public.users where is_admin= false order by name `);
     res.render('userDetails',{posts:allusers.rows});
 })
 
