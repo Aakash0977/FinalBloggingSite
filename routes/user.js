@@ -233,7 +233,7 @@ router.get('/comment/:blogId',checkNotAuthenticated, async (req, res) => {
     const allBlogComment = await pool.query(`Select c.ID,blog_id,comment,user_id,u.name
 	from tbl_blog_comment c
 	left join users u on u.ID=c.user_id
-    where blog_id=$1`,[req.params.blogId]);
+    where blog_id=$1 order by created_date`,[req.params.blogId]);
 
     res.render('post',  {user: req.user, posts: allBlogPost.rows, comments: allBlogComment.rows});
 });
